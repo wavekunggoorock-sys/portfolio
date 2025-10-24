@@ -53,12 +53,20 @@
 
   document.querySelectorAll('.transition-link').forEach(link => {
   link.addEventListener('click', function(e) {
-    e.preventDefault();
     const href = this.getAttribute('href');
+
+    // ถ้า href เป็นลิงก์ภายนอก (เริ่มด้วย http)
+    if (href.startsWith('http')) {
+      // เปิดปกติในแท็บใหม่
+      return;
+    }
+
+    // ถ้าเป็นลิงก์ภายในเว็บ ให้ทำ fade-out
+    e.preventDefault();
     document.body.classList.add('fade-out');
     setTimeout(() => {
       window.location.href = href;
-    }, 500); // เวลาให้ fade-out เสร็จ
+    }, 500);
   });
 });
 
