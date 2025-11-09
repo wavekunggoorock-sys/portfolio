@@ -205,7 +205,11 @@ document.querySelectorAll('.project-card .btn').forEach(btn => {
 });
 
 function showImage() {
-  modalImg.src = currentImages[currentIndex];
+  modalImg.classList.remove('show'); // fade out
+  setTimeout(() => {
+    modalImg.src = currentImages[currentIndex];
+    modalImg.classList.add('show'); // fade in
+  }, 200);
 }
 
 nextBtn.addEventListener('click', () => {
@@ -223,14 +227,7 @@ window.addEventListener('click', (e) => {
   if(e.target === modal) modal.style.display = 'none';
 });
 
-function showImage() {
-  modalImg.classList.remove('show'); // เริ่ม fade out
-  setTimeout(() => {
-    modalImg.src = currentImages[currentIndex]; // เปลี่ยนรูป
-    modalImg.classList.add('show'); // fade in
-  }, 200); // delay 200ms ให้ fade out ก่อนเปลี่ยน
 
-}
 
 document.querySelectorAll('.transition-link').forEach(link => {
   link.addEventListener('click', function(e) {
@@ -247,6 +244,45 @@ document.querySelectorAll('.transition-link').forEach(link => {
 window.addEventListener('load', () => {
   document.body.classList.add('fade-in');
 });
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+modalImg.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+modalImg.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, false);
+
+function handleSwipe() {
+  if (touchEndX < touchStartX - 30) {
+    // swipe left → next image
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    showImage();
+  }
+  if (touchEndX > touchStartX + 30) {
+    // swipe right → prev image
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    showImage();
+  }
+}
+
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+function checkScreenSize(e) {
+  if(e.matches){
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+  } else {
+    prevBtn.style.display = 'block';
+    nextBtn.style.display = 'block';
+  }
+}
+mediaQuery.addEventListener('change', checkScreenSize);
+checkScreenSize(mediaQuery);
+
   </script>
 </body>
 </html>

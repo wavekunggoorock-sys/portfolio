@@ -129,6 +129,31 @@
             border-radius: 0.5rem;
             border-bottom: 0.5rem solid #b74b4b;
         }
+
+        .home-content .btn {
+        display: block;        /* ให้ปุ่มเป็นบล็อกเต็มบรรทัด */
+        width: 70%;            /* ปรับขนาดปุ่มให้พอดีมือถือ */
+        margin: 1rem auto;     /* เว้นระยะห่างบน–ล่าง และจัดกึ่งกลาง */
+        text-align: center;    /* จัดตัวอักษรตรงกลาง */
+        }
+        
+        .home-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* จัด content กึ่งกลางแนวนอน */
+    }
+
+    .social-icons {
+        justify-content: center; /* จัด icon กึ่งกลาง */
+        margin: 2rem 0;          /* เว้นระยะบน-ล่าง */
+    }
+
+    /* Buttons ก็จัดตรงกลาง */
+    .home-content .btn {
+        width: 70%;
+        text-align: center;
+        margin: 1rem auto;
+    }
     }
 
     section{
@@ -1057,3 +1082,6 @@
         font-size: 2.2rem;
     }
 }
+
+
+
