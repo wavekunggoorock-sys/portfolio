@@ -648,7 +648,7 @@
   width: 100%;
   min-height: 100vh;
   background: transparent;
-  color: #000;
+  color: #b74b4b;
   padding: 8rem 9%;
   display: flex;
   flex-direction: column;
@@ -662,6 +662,16 @@
   color: #b74b4b;
   text-align: center;
   -webkit-text-stroke: 1px rgb(0, 0, 0); /* เพิ่มขอบสีดำรอบตัวอักษร */
+}
+
+.projects-intro {
+  color: #fff;              /* ตัวอักษรสีขาว */
+  font-size: 1.8rem;        /* ขนาดพอเหมาะ */
+  text-align: center;       /* จัดกึ่งกลาง */
+  margin-bottom: 3rem;      /* เว้นระยะจาก heading และ project cards */
+  line-height: 1.6;         /* ความสูงบรรทัดอ่านง่าย */
+  max-width: 800px;         /* ไม่ให้ข้อความยาวเกิน */
+  animation: fadeInText 1s ease forwards; /* เพิ่ม animation เล็กน้อย */
 }
 
 .projects-container {
